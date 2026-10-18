@@ -1,0 +1,299 @@
+body.library {
+  max-inline-size: 1240px;
+  margin: 0 auto;
+  padding: var(--space-5);
+}
+.page-head h1 {
+  font-size: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+}
+.page-head h1 .appName {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+#saving {
+  margin: var(--space-1) 0 var(--space-3);
+}
+.now:not(:empty) {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-note);
+}
+.now dl {
+  grid-template-columns: max-content minmax(0, 60em);
+}
+.now > .muted {
+  color: var(--text-muted);
+}
+#search {
+  font-size: var(--fs-note);
+  line-height: 1;
+  inline-size: 20em;
+  block-size: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+}
+#searchCount {
+  font-size: var(--fs-note);
+}
+.toolbar button {
+  block-size: 28px;
+}
+.toolbar .divider {
+  inline-size: 1px;
+  block-size: 20px;
+  margin: 0 var(--space-3);
+  background: var(--line-strong);
+}
+.message {
+  font-size: var(--fs-note);
+  color: var(--text-muted);
+  margin: calc(-1 * var(--space-2)) 0 var(--space-2);
+  text-align: end;
+}
+.message:empty {
+  display: none;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  font-size: var(--fs-body);
+}
+th,
+td {
+  text-align: start;
+  vertical-align: middle;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  max-inline-size: none;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+  color: var(--text-muted);
+  font-size: var(--fs-note);
+  font-weight: 600;
+  white-space: nowrap;
+}
+td {
+  background: none;
+}
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+th.num,
+td.num {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tracks tbody tr:not(.detail):hover td {
+  background: var(--panel);
+}
+.tracks td {
+  white-space: nowrap;
+}
+.tracks :is(th, td).num + :is(th, td):not(.num) {
+  padding-inline-start: var(--space-5);
+}
+.tracks th[data-col='exclude'] {
+  inline-size: 1%;
+}
+.tracks th[data-col='title'] button.sort {
+  padding-inline-start: 13px;
+}
+.tracks tr:has(+ tr.detail) td,
+tr.detail td {
+  background: var(--accent-soft);
+}
+.tracks tr:has(+ tr.detail) td {
+  border-bottom-color: transparent;
+}
+.tracks tr:has(+ tr.detail) td:first-child,
+tr.detail td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+td.empty {
+  color: var(--text-faint);
+}
+td.weak {
+  color: var(--text-faint);
+}
+td.weak::after {
+  content: '?';
+  font-size: var(--fs-small);
+  margin-inline-start: 2px;
+}
+/* the mark sits in the padding so the digits stay aligned */
+td.num.weak {
+  position: relative;
+}
+td.num.weak::after {
+  position: absolute;
+  inset-inline-end: 2px;
+}
+
+th button.sort {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+th button.sort:hover {
+  color: var(--text);
+}
+th button.sort:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+th button.sort::after {
+  content: '↕';
+  font-size: 12px;
+  opacity: 0.6;
+}
+th.num button.sort {
+  flex-direction: row-reverse;
+}
+th[aria-sort] {
+  color: var(--text);
+}
+/* loadAll() hands the rows over newest first */
+#trackHead:not(:has(th[aria-sort])) th[data-col='updated'] {
+  color: var(--text);
+}
+#trackHead:not(:has(th[aria-sort])) th[data-col='updated'] button.sort::after {
+  content: '↓';
+  opacity: 1;
+  color: var(--accent);
+}
+th[aria-sort='ascending'] button.sort::after {
+  content: '↑';
+  opacity: 1;
+  color: var(--accent);
+}
+th[aria-sort='descending'] button.sort::after {
+  content: '↓';
+  opacity: 1;
+  color: var(--accent);
+}
+
+td.toggle {
+  cursor: pointer;
+  color: var(--text-faint);
+  font-size: var(--fs-note);
+}
+td.toggle::before {
+  content: '';
+  display: inline-block;
+  vertical-align: -2px;
+  inline-size: 22px;
+  block-size: 12px;
+  border-radius: 999px;
+  background: var(--switch-off);
+  box-shadow: inset 2px 0 0 2px var(--switch-off);
+  background-image: radial-gradient(circle at 6px 50%, #fff 4px, transparent 4.5px);
+}
+td.toggle.on {
+  color: var(--warn);
+  font-weight: 600;
+}
+td.toggle.on::before {
+  background-color: var(--warn);
+  box-shadow: none;
+  background-image: radial-gradient(circle at 16px 50%, #fff 4px, transparent 4.5px);
+  margin-inline-end: 6px;
+}
+td.track {
+  cursor: pointer;
+  white-space: normal;
+  min-inline-size: 14em;
+  max-inline-size: 28em;
+}
+td.track .main {
+  display: block;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+td.track .sub {
+  display: block;
+  font-size: var(--fs-note);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+td.track .main::before {
+  content: '';
+  display: inline-block;
+  inline-size: 5px;
+  block-size: 5px;
+  margin: 0 8px 2px 0;
+  border: solid var(--text-muted);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(-45deg);
+  transition: transform 0.15s var(--ease-2);
+}
+td.track[aria-expanded='true'] .main::before {
+  transform: rotate(45deg);
+}
+td.track .sub {
+  padding-inline-start: 13px;
+}
+tr.detail td {
+  padding: var(--space-2) var(--space-4) var(--space-4) 25px;
+  white-space: normal;
+}
+tr.detail td.pad {
+  padding: 0;
+}
+tr.detail dl {
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-4);
+  font-size: var(--fs-note);
+  max-inline-size: 70em;
+}
+tr.detail dd {
+  font-variant-numeric: tabular-nums;
+}
+tr.detail dd ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+tr.detail dd li {
+  padding: 0;
+}
+.legend {
+  font-size: var(--fs-note);
+  color: var(--text-muted);
+  margin: var(--space-2) 0 0;
+}
+
+body.library h2 {
+  font-size: var(--fs-body);
+  margin: var(--space-5) 0 var(--space-2);
+}
+.history {
+  max-block-size: 22em;
+  overflow-y: auto;
+}
+.history td {
+  font-size: var(--fs-note);
+  font-variant-numeric: tabular-nums;
+}

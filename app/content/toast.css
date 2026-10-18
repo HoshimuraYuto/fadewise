@@ -1,0 +1,21 @@
+/* Toastify's own positioning does not work inside a shadow root. */
+.toastify.fw {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: 88px;
+  top: auto;
+  transform: translateX(-50%);
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgb(33 33 33 / 0.96);
+  color: #fff;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.4);
+  font:
+    500 13px/1.4 Roboto,
+    Arial,
+    sans-serif;
+  pointer-events: none;
+  cursor: default;
+}

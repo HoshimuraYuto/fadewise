@@ -1,0 +1,45 @@
+// mirrors fadeStatus() in page/player/status.mts
+export function fade(over?: Record<string, unknown>) {
+  return Object.assign(
+    {
+      vid: 'v1',
+      ending: { kind: 'abrupt', fadeSec: 3, silenceSec: 2, lastSoundSec: 198 },
+      fadeIn: false,
+      fadeOutStart: 194.8,
+      fadeOutEnd: 198,
+      skipAt: null,
+      planReason: 'analysed',
+      align: { on: false, reason: 'no_grid' },
+      scheduled: false,
+      lastAction: null,
+      gapless: false,
+      transition: {
+        kind: 'fade_trim',
+        reason: 'abrupt',
+        atSec: 198,
+        skipSec: 2,
+        ending: 'abrupt',
+        state: 'idle',
+        result: null,
+        cancel: null,
+        wash: false,
+        pair: null,
+        nextKnown: true,
+        incoming: null,
+      },
+      marks: {
+        dur: 200,
+        fs: 0.6,
+        fx: true,
+        ls: 198,
+        fadesOn: true,
+        trOn: true,
+        fadeInSec: null,
+        fadeInDone: false,
+        outResult: null,
+        excluded: false,
+      },
+    },
+    over || {},
+  );
+}

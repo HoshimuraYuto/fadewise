@@ -1,0 +1,80 @@
+:host {
+  all: initial;
+}
+.box {
+  position: fixed;
+  left: 8px;
+  bottom: 80px;
+  width: 360px;
+  max-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  background: rgb(20 20 20 / 0.92);
+  color: #eee;
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-radius: 8px;
+  font:
+    11px/1.45 ui-monospace,
+    Menlo,
+    Consolas,
+    monospace;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.5);
+  z-index: 2147483646;
+}
+.box.min {
+  width: auto;
+  max-height: none;
+}
+.head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 6px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+}
+.box.min .head {
+  border-bottom: 0;
+}
+.title {
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+}
+button {
+  all: unset;
+  cursor: pointer;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.12);
+  color: #eee;
+  font: inherit;
+}
+button:hover {
+  background: rgb(255 255 255 / 0.22);
+}
+.state {
+  padding: 4px 6px;
+  white-space: pre-wrap;
+  color: #9fe39f;
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+}
+.log {
+  overflow: auto;
+  padding: 4px 6px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.box.min .state,
+.box.min .log {
+  display: none;
+}
+.t {
+  color: #8ab4f8;
+}
+.ext {
+  color: #fdd663;
+}
+.warn {
+  color: #f28b82;
+}

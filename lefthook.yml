@@ -1,0 +1,36 @@
+pre-commit:
+  jobs:
+    - name: gitleaks
+      skip:
+        - run: '! command -v gitleaks'
+      run: gitleaks git --pre-commit --staged --redact --no-banner
+
+    - name: sort-package-json
+      glob: 'package.json'
+      run: pnpm exec sort-package-json {staged_files}
+      stage_fixed: true
+
+    - name: oxfmt
+      run: pnpm exec oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+
+    - name: prettier-sh
+      glob: '*.sh'
+      exclude:
+        - 'spikes/**'
+        - 'verification/**'
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
+
+    - name: oxlint
+      glob: '*.{js,mjs,cjs,ts,mts,cts}'
+      run: pnpm exec oxlint --no-error-on-unmatched-pattern {staged_files}
+
+    - name: typecheck
+      glob: '*.{ts,mts,cts}'
+      run: pnpm run --silent typecheck
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: pnpm exec commitlint --edit {1}

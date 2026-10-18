@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../ui/style.css" />
+    <link rel="stylesheet" href="../ui/popup.css" />
+    <title></title>
+  </head>
+  <body class="popup">
+    <h1 class="appName"></h1>
+    <section class="section mode" aria-labelledby="modeHeading">
+      <div class="section-head">
+        <h2 id="modeHeading" data-i18n="popup.preset"></h2>
+        <span class="hint"><span data-i18n="shortcut.all"></span> <kbd id="kbdAll"></kbd></span>
+      </div>
+      <div class="segmented" role="radiogroup" aria-labelledby="modeHeading">
+        <label><input type="radio" name="preset" value="auto" /> <span data-i18n="preset.auto"></span></label>
+        <label><input type="radio" name="preset" value="gentle" /> <span data-i18n="preset.gentle"></span></label>
+        <label><input type="radio" name="preset" value="off" /> <span data-i18n="preset.off"></span></label>
+      </div>
+      <p id="presetNote" class="note"></p>
+      <p id="presetCustom" class="note" data-i18n="preset.custom" hidden></p>
+    </section>
+    <section id="playing" class="section card" aria-labelledby="playingHeading">
+      <h2 id="playingHeading" class="eyebrow" data-i18n="popup.nowPlaying"></h2>
+      <p id="playingTrack" class="track-title"></p>
+      <p id="playingArtist" class="track-artist"></p>
+      <label class="row" id="excludeRow" hidden
+        ><input type="checkbox" id="excludeTrack" class="switch" />
+        <span class="row-label"><span data-i18n="popup.exclude"></span> <kbd id="kbdTrack"></kbd></span
+      ></label>
+      <div id="summary" class="events"></div>
+    </section>
+    <details id="individual" class="section">
+      <summary data-i18n="popup.individual"></summary>
+      <div class="group">
+        <h3 data-i18n="group.volume"></h3>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="gainEnabled" class="switch" /> <span data-i18n="popup.gain"></span
+          ></label>
+        </div>
+      </div>
+      <div class="group">
+        <h3 data-i18n="group.fades"></h3>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="fadesEnabled" class="switch" /> <span data-i18n="popup.fades"></span
+          ></label>
+          <p class="note" data-i18n="popup.fadesNote"></p>
+          <div class="children">
+            <div class="setting">
+              <label class="row"
+                ><input type="checkbox" id="beatAlign" class="switch" /> <span data-i18n="popup.beatAlign"></span
+              ></label>
+              <p class="note" data-i18n="popup.beatAlignNote"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group">
+        <h3 data-i18n="group.gaps"></h3>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="transitions" class="switch" /> <span data-i18n="popup.transitions"></span
+          ></label>
+          <p class="note" data-i18n="popup.transitionsNote"></p>
+          <div class="children">
+            <div class="setting">
+              <label class="row"
+                ><input type="checkbox" id="transitionWash" class="switch" />
+                <span data-i18n="popup.transitionWash"></span
+              ></label>
+            </div>
+            <div class="setting">
+              <label class="row"
+                ><span data-i18n="popup.mixPoints"></span>
+                <select id="mixPoints">
+                  <option value="gentle" data-i18n="mix.gentle"></option>
+                  <option value="auto" data-i18n="mix.auto"></option>
+                  <option value="aggressive" data-i18n="mix.aggressive"></option></select
+              ></label>
+              <details class="more">
+                <summary data-i18n="popup.more"></summary>
+                <p class="note" data-i18n="popup.mixPointsNote"></p>
+              </details>
+            </div>
+            <div class="setting">
+              <label class="row"
+                ><input type="checkbox" id="overlap" class="switch" /> <span data-i18n="popup.overlap"></span
+              ></label>
+              <p class="note" data-i18n="popup.overlapShort"></p>
+              <details class="more">
+                <summary data-i18n="popup.more"></summary>
+                <p class="note" data-i18n="popup.overlapNote"></p>
+              </details>
+              <div class="children">
+                <div class="setting">
+                  <label class="row"
+                    ><span data-i18n="popup.overlapStyle"></span>
+                    <select id="overlapStyle">
+                      <option value="auto" data-i18n="overlapStyle.auto"></option>
+                      <option value="simple" data-i18n="overlapStyle.simple"></option></select
+                  ></label>
+                  <details class="more">
+                    <summary data-i18n="popup.more"></summary>
+                    <p class="note" data-i18n="popup.overlapStyleNote"></p>
+                  </details>
+                </div>
+                <div class="setting">
+                  <label class="row"
+                    ><span data-i18n="popup.leadRate"></span>
+                    <select id="leadRate">
+                      <option value="1.25" data-i18n="leadRate.1.25"></option>
+                      <option value="1.5" data-i18n="leadRate.1.5"></option></select
+                  ></label>
+                  <details class="more">
+                    <summary data-i18n="popup.more"></summary>
+                    <p class="note" data-i18n="popup.leadRateNote"></p>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group">
+        <h3 data-i18n="group.order"></h3>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="reorder" class="switch" /> <span data-i18n="popup.reorder"></span
+          ></label>
+          <p class="note" data-i18n="popup.reorderNote"></p>
+          <p id="reorderLog" class="log"></p>
+          <div class="children">
+            <div class="setting">
+              <label class="row"
+                ><input type="checkbox" id="reorderAlbums" class="switch" />
+                <span data-i18n="popup.reorderAlbums"></span
+              ></label>
+            </div>
+            <div class="setting">
+              <label class="row"
+                ><input type="checkbox" id="reorderToast" class="switch" /> <span data-i18n="popup.reorderToast"></span
+              ></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group">
+        <h3 data-i18n="group.display"></h3>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="queueBadges" class="switch" /> <span data-i18n="popup.queueBadges"></span
+          ></label>
+        </div>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="seekbarMarks" class="switch" /> <span data-i18n="popup.seekbarMarks"></span
+          ></label>
+        </div>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="reorderDebug" class="switch" /> <span data-i18n="popup.reorderDebug"></span
+          ></label>
+        </div>
+      </div>
+      <div class="group">
+        <h3 data-i18n="group.other"></h3>
+        <div class="setting">
+          <label class="row"
+            ><input type="checkbox" id="autoContinue" class="switch" /> <span data-i18n="popup.autoContinue"></span
+          ></label>
+          <p class="note" data-i18n="popup.autoContinueNote"></p>
+          <p id="autoContinueLog" class="log"></p>
+        </div>
+      </div>
+    </details>
+    <section class="section data" aria-labelledby="dataHeading">
+      <h2 id="dataHeading" data-i18n="popup.dataHeading"></h2>
+      <label class="row"
+        ><input type="checkbox" id="analysisEnabled" class="switch" /> <span data-i18n="popup.analysis"></span
+      ></label>
+      <ul class="links">
+        <li><a href="library.html" target="_blank" id="openLibrary" data-i18n="popup.openLibrary"></a></li>
+        <li><a href="welcome.html" target="_blank" id="openWelcome" data-i18n="popup.openWelcome"></a></li>
+      </ul>
+    </section>
+    <details id="details" class="section">
+      <summary data-i18n="popup.details"></summary>
+      <section id="now"></section>
+      <p class="note" data-i18n="popup.switchesNote"></p>
+      <textarea id="switches" readonly rows="4" spellcheck="false"></textarea>
+      <button type="button" id="copySwitches" data-i18n="popup.copySwitches"></button>
+    </details>
+    <div class="footer">
+      <label
+        ><span data-i18n="lang.label"></span>
+        <select id="uiLanguage">
+          <option value="auto" data-i18n="lang.auto"></option>
+          <option value="ja" data-i18n="lang.ja"></option>
+          <option value="en" data-i18n="lang.en"></option></select
+      ></label>
+      <span class="spacer"></span>
+      <a href="licenses.html" target="_blank" id="openLicenses" data-i18n="footer.licenses"></a>
+    </div>
+    <script type="module" src="../ui/popup.mts"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Fadewise",
+    "description": "Extension name. Must equal EXTENSION_NAME in shared/brand.mts."
+  },
+  "extDescription": {
+    "message": "YouTube Music™ 向けの音量そろえ・フェード・曲間のつなぎ・キーと BPM での曲順の並べ替え。同意後に端末内で解析し、外部に送信しません。",
+    "description": "Manifest description, 132 characters at most."
+  },
+  "cmdToggleAll": {
+    "message": "すべてオフ／元に戻す",
+    "description": "Keyboard shortcut (chrome://extensions/shortcuts)."
+  },
+  "cmdToggleTrack": {
+    "message": "再生中の曲を触らない／戻す",
+    "description": "Keyboard shortcut (chrome://extensions/shortcuts)."
+  }
+}

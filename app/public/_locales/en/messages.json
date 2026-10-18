@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Fadewise",
+    "description": "Extension name. Must equal EXTENSION_NAME in shared/brand.mts."
+  },
+  "extDescription": {
+    "message": "Volume leveling, fades, gap closing and key/BPM ordering for YouTube Music™. Learns on your device after you agree; sends nothing.",
+    "description": "Manifest description, 132 characters at most."
+  },
+  "cmdToggleAll": {
+    "message": "Turn everything off / back on",
+    "description": "Keyboard shortcut (chrome://extensions/shortcuts)."
+  },
+  "cmdToggleTrack": {
+    "message": "Leave the playing track alone / not",
+    "description": "Keyboard shortcut (chrome://extensions/shortcuts)."
+  }
+}

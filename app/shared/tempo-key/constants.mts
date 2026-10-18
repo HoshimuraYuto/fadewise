@@ -1,0 +1,22 @@
+export const TEMPO_LOGIC_VERSION = 1;
+export const FLUX_RATE = 100;
+export const WINDOW_SEC = 30;
+export const MIN_WINDOW_SEC = 20;
+export const MAX_LISTEN_FLUX_SEC = 480;
+export const OCTAVE_TOL = 0.04; // MIREX Acc1 tolerance
+export const MAX_VOTES = 24;
+export const TEMPO_FULL_SEC = 120;
+export const KEY_FULL_FRAMES = 600;
+export const KEY_FULL_MARGIN = 0.1;
+export const KEY_RELATED_MARGIN = 0.2;
+export const KEY_LOGIC_VERSION = 2;
+export const RELIABLE = 0.5;
+
+export const SEG_LOGIC_VERSION = 1;
+export const BLOCK_SEC = 5;
+export const MAX_BLOCKS = 96;
+export const SEG_SEC = 30;
+export const SEG_TEMPO_FULL_SEC = 60;
+export const SEG_KEY_FULL_FRAMES = 300;
+export const MAX_SEG_VOTES = 8;
+export const ANCHOR_RESET_SEC = 3;

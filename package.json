@@ -1,0 +1,37 @@
+{
+  "name": "fadewise-repo",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --filter fadewise build",
+    "build:verify": "pnpm --filter fadewise build:verify",
+    "format": "oxfmt && prettier --no-error-on-unmatched-pattern --write \"**/*.sh\" \"!{spikes,verification}/**\"",
+    "format:check": "oxfmt --check && prettier --no-error-on-unmatched-pattern --check \"**/*.sh\" \"!{spikes,verification}/**\"",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "prepare": "lefthook install",
+    "test": "pnpm --filter fadewise test && node --test \"scripts/*.test.mjs\"",
+    "typecheck": "tsc -p app/tsconfig.json && tsc -p app/worklets/tsconfig.json",
+    "zip": "pnpm --filter fadewise zip"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "@semantic-release/changelog": "7.0.0",
+    "@semantic-release/exec": "7.1.0",
+    "@semantic-release/git": "11.0.1",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/node": "26.6.5",
+    "lefthook": "2.2.2",
+    "oxfmt": "0.73.0",
+    "oxlint": "1.88.0",
+    "oxlint-tsgolint": "7.0.2004",
+    "prettier": "3.9.10",
+    "prettier-plugin-sh": "0.20.2",
+    "semantic-release": "25.0.9",
+    "sort-package-json": "4.1.0",
+    "typescript": "7.0.2"
+  },
+  "packageManager": "pnpm@12.14.0"
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "erasableSyntaxOnly": true,
+    "noUncheckedIndexedAccess": false,
+    "types": ["node"]
+  },
+  "include": ["**/*.ts", "**/*.mts", "**/*.cts", ".wxt/wxt.d.ts"],
+  "exclude": ["node_modules", ".output", "worklets"]
+}

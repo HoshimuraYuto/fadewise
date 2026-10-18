@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja" data-title-key="library.title">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../ui/style.css" />
+    <link rel="stylesheet" href="../ui/library.css" />
+    <title></title>
+  </head>
+  <body class="library">
+    <header class="page-head">
+      <h1><span data-i18n="library.title"></span> <span class="appName"></span></h1>
+      <p id="saving" class="muted"></p>
+    </header>
+    <section id="now" class="now"></section>
+    <div class="toolbar">
+      <input type="search" id="search" data-placeholder-key="library.search" autocomplete="off" spellcheck="false" />
+      <span id="searchCount" class="muted" role="status"></span>
+      <span class="spacer"></span>
+      <button id="export" data-i18n="library.export"></button>
+      <button id="import" data-i18n="library.import"></button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden />
+      <span class="divider" aria-hidden="true"></span>
+      <button id="clear" class="danger" data-i18n="library.clear"></button>
+    </div>
+    <p id="message" class="message" role="status"></p>
+    <div class="table-wrap">
+      <table class="tracks">
+        <thead id="trackHead">
+          <tr>
+            <th data-col="exclude"><button type="button" class="sort" data-i18n="col.exclude"></button></th>
+            <th data-col="title"><button type="button" class="sort" data-i18n="col.track"></button></th>
+            <th data-col="lufs" class="num"><button type="button" class="sort" data-i18n="col.lufs"></button></th>
+            <th data-col="duration" class="num">
+              <button type="button" class="sort" data-i18n="col.duration"></button>
+            </th>
+            <th data-col="bpm" class="num"><button type="button" class="sort" data-i18n="col.bpm"></button></th>
+            <th data-col="key"><button type="button" class="sort" data-i18n="col.key"></button></th>
+            <th data-col="ending"><button type="button" class="sort" data-i18n="col.ending"></button></th>
+            <th data-col="mix"><button type="button" class="sort" data-i18n="col.mix"></button></th>
+            <th data-col="updated" class="num"><button type="button" class="sort" data-i18n="col.updated"></button></th>
+          </tr>
+        </thead>
+        <tbody id="tracks"></tbody>
+      </table>
+    </div>
+    <p class="legend" data-i18n="library.legend"></p>
+    <h2 data-i18n="library.h2Reorder"></h2>
+    <div class="table-wrap history">
+      <table>
+        <tbody id="reorderRuns"></tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <a href="welcome.html" target="_blank" data-i18n="popup.openWelcome"></a>
+      <a href="licenses.html" target="_blank" id="openLicenses" data-i18n="footer.licenses"></a>
+    </div>
+    <script type="module" src="../ui/library.mts"></script>
+  </body>
+</html>
